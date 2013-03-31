@@ -1,5 +1,7 @@
 <?php
 
+		include 'functions.php';
+
 		$button = $_POST['button'];
 		
 		if($button[0]=='Edit'){
@@ -17,13 +19,13 @@
 			echo "Project ID: <input type=\"text\" name=\"projectid\" value=\"$project_id\" readonly=\"true\"><br>";
 			echo "Sequence: <input type=\"text\" name=\"sequence\"><br>";
 			echo "Creator ID: <input type=\"text\" name=\"creatorid\"><br>";
-			echo "Assignee ID: <input type=\"text\" name=\"assigneeid\"><br>";
+			getAssignees($project_id);
 			echo "Start Date: <input type=\"text\" name=\"start\"><br>";
 			echo "Due Date: <input type=\"text\" name=\"due\"><br>";
 			echo "Complete: <input type=\"text\" name=\"complete\"><br>";
 			echo "Note: <input type=\"text\" name=\"note\"><br>";
 				
-				echo "<input type=\"submit\" value=\"Submit\">";
+			echo "<input type=\"submit\" value=\"Submit\">";
 			echo "</form>";
 		}
 

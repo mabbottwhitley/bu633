@@ -11,5 +11,9 @@
 			
 			include 'project_edit.php';
 		}
+		else if ($button[0]=='Add'){
+			
+			include 'project_new.html';
+		}
 
 ?>

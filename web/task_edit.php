@@ -32,6 +32,7 @@
 			$taskDue = $row['due_date'];
 			$taskComplete = $row['completion'];
 			$taskNote = $row['notes'];
+			$groupID = 0;
 			
 			//output tasks to screen
 		
@@ -42,7 +43,7 @@
 			echo "Sequence: <input type=\"text\" name=\"sequence\" value=\"$taskSequence\"><br>";
 			echo" Project ID: <input type=\"text\" name=\"projectid\" value=\"$taskProjectID\" readonly=\"true\"><br>";
 			echo "Creator ID: <input type=\"text\" name=\"creatorid\" value=\"$taskCreatorID\" readonly=\"true\"><br>";
-			echo "Assignee ID: <input type=\"text\" name=\"assigneeid\" value=\"$taskAssigneeID\"><br>";
+			include 'assignees.php';
 			echo "Start: <input type=\"text\" name=\"start\" value=\"$taskStart\"><br>";
 			echo "Due: <input type=\"text\" name=\"due\" value=\"$taskDue\"><br>";
 			echo "Complete: <input type=\"text\" name=\"complete\" value=\"$taskComplete\"><br>";
@@ -52,7 +53,6 @@
 			echo "</form>";
 		
 			}
-			
 
 	}else {
 		

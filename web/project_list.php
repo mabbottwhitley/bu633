@@ -30,6 +30,7 @@
 		echo "</select>";
 		echo "<input name=\"button[]\" type=\"submit\" value=\"Edit\">";
 		echo "<input name=\"button[]\" type=\"submit\" value=\"View\">";
+		echo "<input name=\"button[]\" type=\"submit\" value=\"Add\">";
 		echo "</form>";
 		
 	}

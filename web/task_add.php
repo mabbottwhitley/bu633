@@ -18,7 +18,6 @@
 		$due = $_POST["due"];
 		$complete = $_POST["complete"];		
 		$note = $_POST["note"];
-
 	
 		$newTask = new Task($name, $description, $projectID, $sequence, $creatorID, $assigneeID, $start, $due, $complete, $note);
 		

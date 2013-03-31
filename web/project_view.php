@@ -83,7 +83,17 @@
 			echo "Sequence: <input type=\"text\" name=\"start\" value=\"$taskSequence\" readonly=\"true\"><br>";
 			echo" Project ID: <input type=\"text\" name=\"due\" value=\"$taskProjectID\" readonly=\"true\"><br>";
 			echo "Creator ID: <input type=\"text\" name=\"progress\" value=\"$taskCreatorID\" readonly=\"true\"><br>";
-			echo "Assignee ID: <input type=\"text\" name=\"note\" value=\"$taskAssigneeID\" readonly=\"true\"><br>";
+						
+			$queryUser = "SELECT * FROM user WHERE user_id='$taskAssigneeID'";
+		
+			$userOutput = mysqli_query ($dbc, $queryUser); 
+			
+			while ($record = mysqli_fetch_array($userOutput, MYSQLI_ASSOC)){
+		
+				echo "Assigned To: <input type=\"text\" name=\"assignee_id\" value=\"" . $record['first_name'] . " " . $record['last_name'] . "\"readonly=\"true\"><br>";
+						
+			} 
+			
 			echo "Start: <input type=\"text\" name=\"note\" value=\"$taskStart\" readonly=\"true\"><br>";
 			echo "Due: <input type=\"text\" name=\"note\" value=\"$taskDue\" readonly=\"true\"><br>";
 			echo "Complete: <input type=\"text\" name=\"note\" value=\"$taskComplete\" readonly=\"true\"><br>";
