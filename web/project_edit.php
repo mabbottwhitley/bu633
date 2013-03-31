@@ -9,10 +9,6 @@
 	if (isset($_POST['projectid'])){
 	
 		$project_id = $_POST['projectid'];
-	
-		//$project_id = $_POST['project_id'][0];
-		
-		//echo $project_id;
 		
 		$query = "SELECT * FROM project WHERE project_id = $project_id";
 			

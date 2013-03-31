@@ -14,7 +14,7 @@
 		
 	if($r){
 	
-		echo "<form action=\"project_edit.php\" method=\"post\">";
+		echo "<form action=\"project_view_edit.php\" method=\"post\">";
 		echo "<select name=\"projectid\">";
 		
 	}
@@ -28,7 +28,8 @@
 	if($r){
 	
 		echo "</select>";
-		echo "<input type=\"submit\" value=\"Edit\">";
+		echo "<input name=\"button[]\" type=\"submit\" value=\"Edit\">";
+		echo "<input name=\"button[]\" type=\"submit\" value=\"View\">";
 		echo "</form>";
 		
 	}

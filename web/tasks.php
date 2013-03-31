@@ -5,6 +5,7 @@ class Task{
 	var $name;
 	var $description;
 	var $projectID;
+	var $sequence;
 	var $creatorID;
 	var $assigneeID;
 	var $start;
@@ -12,11 +13,12 @@ class Task{
 	var $complete;
 	var $note;
 	
-	function Task($strname, $strdescription, $numprojectID, $numcreatorID, $numassigneeID, $datestart, $datedue, $boolcomplete, $strnote){
+	function Task($strname, $strdescription, $numprojectID, $sequence, $numcreatorID, $numassigneeID, $datestart, $datedue, $boolcomplete, $strnote){
 		
 		$this->name = $strname;
 		$this->description = $strdescription;
 		$this->projectID = $numprojectID;
+		$this->sequence = $sequence;
 		$this->creatorID = $numcreatorID;
 		$this->assigneeID = $numassigneeID;
 		$this->start = $datestart;
@@ -39,6 +41,11 @@ class Task{
 	function getProjectID(){
 		
 		return $this->projectID;
+	}
+	
+	function getSequence(){
+		
+		return $this->sequence;
 	}
 	
 	function getCreatorID(){
@@ -66,7 +73,7 @@ class Task{
 		return $this->complete;
 	}
 	
-	function getNotes(){
+	function getNote(){
 		
 		return $this->note;
 	}
@@ -84,6 +91,11 @@ class Task{
 	function setProjectID($numProjectID){
 		
 		$this->projectID = $numProjectID;
+	}
+	
+	function setSequence($numSequence){
+		
+		$this->sequence = $numSequence;
 	}
 	
 	function setCreatorID($numCreatorID){
@@ -111,7 +123,7 @@ class Task{
 		$this->complete = $boolComplete;
 	}
 	
-	function setNotes($strNote){
+	function setNote($strNote){
 		
 		$this->note = $strNote;
 	}
