@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<link rel="stylesheet" type="text/css" href="css/webpage.css">
+		<link rel="stylesheet" type="text/css" href="css/Print.css" media="print">
+		<title>Projects</title>
+		<meta name="description" content="This is the Project page">
+		<meta name="keywords" content="Projects Page, project, page">
+		<meta charset="UTF-8">
+		<style>
+		img {border: 1px solid white}
+		</style>
+		
+		
+
+	</head>
+
+	<body>	
+		<div id="main">
+			<header>
+				<div id="title">
+					<h1><a href="Home.html">Project Manager</a></h1>
+					<h2>Manage Your Tasks</h2>
+				</div>
+				<nav>
+					<div id="menu_container">
+						<ul class="menu" id="nav">
+							<li><a href="Home.html">Home</a></li>
+							<li class="inside"><a href="Account.html">Account</a></li>
+							<li class="inside"><a href="project_list.php">Projects</a></li>
+							<li class="inside"><a href="contact.html">Contact</a>       
+							</li>
+						</ul>
+					</div>
+				</nav>
+			</header>
+			<div id="site_content">
+			<div class="content">
+				<h4>Add A New Project</h4>
+				<form action="project_add.php" method="post">
+				  Project Name: <input type="text" name="name"><br>
+				  Project Owner: <input type="text" name="owner"><br>
+				  Start Date: <input type="text" name="start"><br>
+				  Due Date: <input type="text" name="due"><br>
+				  Progress: <input type="text" name="progress" readonly="true"><br>
+				  Note: <input type="text" name="note"><br>
+				  <input type="submit" value="Submit">
+				  <input type="button" value="Cancel" onClick="history.go(-1);return true;">
+
+				  
+				</form>
+ 			</div>
+			</div>
+
+			<footer>
+				<p>&copy; CS633 Team1</p>
+				<p id="printnotice">This is a print copy.</p>
+			</footer>	
+	
+		</div>
+	
+	
+	
+</body>
+	
+</html>
