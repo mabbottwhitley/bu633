@@ -1,3 +1,12 @@
+<?php 
+	
+	if(!isset($_SESSION)) {
+		
+		session_start();
+		
+	}
+
+?>
 <!DOCTYPE html>
 <html>
 	<head>
@@ -40,41 +49,74 @@
 <!-----PHP Coding Starts Here------------------------------------------------------------------------------->
 <P><?php
 
+	$session = session_id();
+	
+	/*if(empty($session)) {
+	
+		session_unset();
+		
+		session_start();
+	
+		$session = session_id();
+		
+	}*/
+	
 	include 'projects.php';
 	include '../sql_connect/mysqli_connect.php';
 	
 	ini_set('display_errors',1); 
 	error_reporting(E_ALL);
 
-	$name = $_POST["name"];
-	$owner = $_POST["owner"];
-	$start = $_POST["start"];
-	$due = $_POST["due"];
-	$progress = $_POST["progress"];
-	$complete = 0;
-	$note = $_POST["note"];
+	$first = $_POST["first"];
+	$last = $_POST["last"];
+	$user = $_POST["user"];
+	$title = $_POST["title"];
+	$password = $_POST["password"];
+	$verify = $_POST["verify"];
+	$is_active = 1;
+	
+	$queryUsers = "SELECT user_name FROM user";
+	
+	$rUsers = mysqli_query ($dbc, $queryUsers); 
+	
+	$userCatch = 0;
+				
+	while ($rUserRow = mysqli_fetch_array($rUsers, MYSQLI_ASSOC)){
+	
+		if ($rUserRow['user_name'] == $user){
+		
+			$userCatch = 1;
+			
+		}
+	
+	}
+	
 
-	$newProject = new Project($name, $owner, $start, $due, $progress, $complete, $note);
+	if($password == $verify && $userCatch != 1){
 	
-	$name = $newProject->getName();
-	$owner = $newProject->getOwner();
-	$start = $newProject->getStart();
-	$due = $newProject->getDue();
-	$progress = $newProject->getProgress();
-	$note = $newProject->getNote();
+		$passwordHash = md5($password);
 	
-	$query = "INSERT INTO project (project_id, project_name, owner_id, start_date, due_date, progress, notes) VALUES (NULL, '$name', '$owner', '$start', '$due', '$progress', '$note')";
+		$query = "INSERT INTO user (user_id, first_name, last_name, user_name, job_title, is_active, session_id, password_hash) VALUES (NULL, '$first', '$last', '$user', '$title', '$is_active', '$session', '$passwordHash')";
 		
-	$r = mysqli_query ($dbc, $query); 
+		$r = mysqli_query ($dbc, $query); 
 		
-	//check to ensure the query executed correctly 
+		//check to ensure the query executed correctly 
 		
-	if($r){
+		if($r){
 	
-		echo "Project Added Successfuly";
+			echo "User Added Successfully";
 		
-	}else {
-		echo "Project not added";
+			}else {
+				echo "User not added";
+			}
+	}else if ($password != $verify){
+		
+		echo "Passwords don't match";
+		
+	}else if ($userCatch == 1){
+		
+		echo "Username already taken";
+		
 	}
 ?></P>
 <!-------------PHP Coding Ends Here------------------------------------------------------------------------>					

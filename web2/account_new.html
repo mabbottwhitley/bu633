@@ -36,14 +36,15 @@
 			</header>
 			<div id="site_content">
 			<div class="content">
-				<h4>Add A New Project</h4>
-				<form action="project_add.php" method="post">
-				  Project Name: <input type="text" name="name"><br>
-				  Project Owner: <input type="text" name="owner"><br>
-				  Start Date: <input type="text" name="start"><br>
-				  Due Date: <input type="text" name="due"><br>
-				  Progress: <input type="text" name="progress" readonly="true"><br>
-				  Note: <input type="text" name="note"><br>
+				<h4>Create Account</h4>
+				<form action="account_add.php" method="post">
+				  First Name: <input type="text" name="first"><br>
+				  Last Name: <input type="text" name="last"><br>
+				  User Name: <input type="text" name="user"><br>
+				  Job Title: <input type="text" name="title"><br>
+				  Password: <input type="password" name="password"><br>
+				  Password Verification: <input type="password" name="verify"><br>
+				  
 				  <input type="submit" value="Submit">
 				  <input type="button" value="Cancel" onClick="history.go(-1);return true;">
 

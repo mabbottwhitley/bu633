@@ -1,3 +1,12 @@
+<?php 
+	
+	if(!isset($_SESSION)) {
+		
+		session_start();
+		
+	}
+
+?>
 <!DOCTYPE html>
 <html>
 	<head>
@@ -36,9 +45,23 @@
 			</header>
 			<div id="site_content">
 			  <div class="content">
-				<h4>Edit Project</h4>
+				<h4>User Login</h4>
 <!-----PHP Coding Starts Here------------------------------------------------------------------------------->
 <P><?php
+
+	//session_start();
+	
+	/*if(empty($session)) {
+	
+		session_unset();
+		
+		session_start();
+	
+		$session = session_id();
+		
+	}*/
+	
+	$session = session_id();
 
 	include 'projects.php';
 	include '../sql_connect/mysqli_connect.php';
@@ -46,36 +69,41 @@
 	ini_set('display_errors',1); 
 	error_reporting(E_ALL);
 
-	$name = $_POST["name"];
-	$owner = $_POST["owner"];
-	$start = $_POST["start"];
-	$due = $_POST["due"];
-	$progress = $_POST["progress"];
-	$complete = 0;
-	$note = $_POST["note"];
+	$user = $_POST["user"];
+	$password = $_POST["password"];
+	
+	$passwordHash = md5($password);
+	
+	$queryUsers = "SELECT user_name, password_hash FROM user WHERE user_name='$user' AND password_hash='$passwordHash'";
+	
+	$rUsers = mysqli_query ($dbc, $queryUsers); 
 
-	$newProject = new Project($name, $owner, $start, $due, $progress, $complete, $note);
+	$userFound = 0;
+		
+	while ($rUserRow = mysqli_fetch_array($rUsers, MYSQLI_ASSOC)){
 	
-	$name = $newProject->getName();
-	$owner = $newProject->getOwner();
-	$start = $newProject->getStart();
-	$due = $newProject->getDue();
-	$progress = $newProject->getProgress();
-	$note = $newProject->getNote();
+		$userFound = 1;	
 	
-	$query = "INSERT INTO project (project_id, project_name, owner_id, start_date, due_date, progress, notes) VALUES (NULL, '$name', '$owner', '$start', '$due', '$progress', '$note')";
-		
-	$r = mysqli_query ($dbc, $query); 
-		
-	//check to ensure the query executed correctly 
-		
-	if($r){
+		$querySessionUpdate = "UPDATE user SET session_id='$session' WHERE user_name='$user'";
+				
+			$r = mysqli_query ($dbc, $querySessionUpdate); 
+				
+			//check to ensure the query executed correctly 
+				
+			if($r){
+			
+				echo "User logged in";
+				
+			}else {
+				echo "User not logged in";
+			}
 	
-		echo "Project Added Successfuly";
-		
-	}else {
-		echo "Project not added";
 	}
+		
+	if ($userFound == 0) {
+		echo "Username or password error";
+	}
+	
 ?></P>
 <!-------------PHP Coding Ends Here------------------------------------------------------------------------>					
 			  </div>

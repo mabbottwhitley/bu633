@@ -3,9 +3,9 @@
 	<head>
 		<link rel="stylesheet" type="text/css" href="css/webpage.css">
 		<link rel="stylesheet" type="text/css" href="css/Print.css" media="print">
-		<title>Accounts</title>
-		<meta name="description" content="This is the Account page">
-		<meta name="keywords" content="Account Page, account, page">
+		<title>Projects</title>
+		<meta name="description" content="This is the Project page">
+		<meta name="keywords" content="Projects Page, project, page">
 		<meta charset="UTF-8">
 		<style>
 		img {border: 1px solid white}
@@ -26,7 +26,7 @@
 					<div id="menu_container">
 						<ul class="menu" id="nav">
 							<li><a href="Home.html">Home</a></li>
-							<li class="inside"><a href="Account.html">Account</a></li>
+							<li class="inside"><a href="account.php">Account</a></li>
 							<li class="inside"><a href="project_list.php">Projects</a></li>
 							<li class="inside"><a href="contact.html">Contact</a>       
 							</li>
@@ -35,21 +35,18 @@
 				</nav>
 			</header>
 			<div id="site_content">
-			  <div id="sidebar_container">
-				<div class="sidebar">
-				  <h3>User Groups</h3>
-					<ul>
-						<li>Administators</li>
-						<li>Project Managers</li>
-						<li>Task Assignees</li>
-						<li>Viewers</li>
-					</ul>
-				</div>
-			  </div>
-			  <div class="content">
-				<h4>User Account Info</h4>
-				<p>Here we should display the user's account information including which user group s/he is assigned to. Also showing whether s/he can view, add, edit and delete would be helpful.</p>
-			  </div>
+			<div class="content">
+				<h4>User Login</h4>
+				<form action="account_login.php" method="post">
+				  User Name: <input type="text" name="user"><br>
+				  Password: <input type="password" name="password"><br>
+				  
+				  <input type="submit" value="Submit">
+				  <input type="button" value="Cancel" onClick="history.go(-1);return true;">
+
+				  
+				</form>
+ 			</div>
 			</div>
 
 			<footer>

@@ -26,7 +26,7 @@
 					<div id="menu_container">
 						<ul class="menu" id="nav">
 							<li><a href="Home.html">Home</a></li>
-							<li class="inside"><a href="Account.html">Account</a></li>
+							<li class="inside"><a href="account.php">Account</a></li>
 							<li class="inside"><a href="project_list.php">Projects</a></li>
 							<li class="inside"><a href="contact.html">Contact</a>       
 							</li>
